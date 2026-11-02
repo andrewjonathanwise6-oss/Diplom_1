@@ -1,24 +1,29 @@
-## Задание 1: Юнит-тесты
+## Diplom_1 — тесты модели бургера
 
-### Автотесты для проверки программы, которая помогает заказать бургер в Stellar Burgers
+Проект содержит модель бургера и unit-тесты классов `Bun`, `Burger`, `Ingredient` и `Database`.
 
-### Реализованные сценарии
+### Установка
 
-Созданы юнит-тесты, покрывающие классы `Bun`, `Burger`, `Ingredient`, `Database`
+```text
+python -m venv .venv
+```
 
-Процент покрытия 100% (отчет: `htmlcov/index.html`)
+В Windows активируйте окружение командой `.\.venv\Scripts\Activate.ps1`, затем установите зависимости:
 
-### Структура проекта
+```text
+pip install -r requirements.txt
+```
 
-- `praktikum` - пакет, содержащий код программы
-- `tests` - пакет, содержащий тесты, разделенные по классам. Например, `bun_test.py`, `burger_test.py` и т.д.
+### Запуск тестов
 
-### Запуск автотестов
+```text
+pytest
+```
 
-**Установка зависимостей**
+### Отчет о покрытии
 
-> `$ pip install -r requirements.txt`
+```text
+pytest --cov=bun --cov=burger --cov=ingredient --cov=database --cov-report=term-missing --cov-report=html --cov-report=xml
+```
 
-**Запуск автотестов и создание HTML-отчета о покрытии**
-
->  `$ pytest --cov=praktikum --cov-report=html`
+Табличный отчет выводится в терминал, HTML-отчет создается в `htmlcov/index.html`, XML-отчет — в `coverage.xml`. Сводка последнего полного прогона сохранена в `coverage_report.txt`.
