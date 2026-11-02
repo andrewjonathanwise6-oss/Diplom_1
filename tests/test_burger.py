@@ -23,7 +23,6 @@ class TestBurger:
         assert burger.bun is None
         assert burger.ingredients == []
 
-
     def test_set_buns_assigns_bun():
         burger = Burger()
         bun = Bun("sesame", 100.0)
@@ -32,14 +31,12 @@ class TestBurger:
 
         assert burger.bun is bun
 
-
     def test_add_ingredient_appends_ingredient(ingredients):
         burger = Burger()
 
         burger.add_ingredient(ingredients[0])
 
         assert burger.ingredients == [ingredients[0]]
-
 
     @pytest.mark.parametrize(
         ("index", "expected_names"),
@@ -57,7 +54,6 @@ class TestBurger:
 
         assert [ingredient.get_name() for ingredient in burger.ingredients] == expected_names
 
-
     @pytest.mark.parametrize(
         ("index", "new_index", "expected_names"),
         [
@@ -73,7 +69,6 @@ class TestBurger:
         burger.move_ingredient(index, new_index)
 
         assert [ingredient.get_name() for ingredient in burger.ingredients] == expected_names
-
 
     def test_get_price_doubles_bun_price_and_adds_ingredient_prices():
         bun = Mock(spec=Bun)
@@ -95,7 +90,6 @@ class TestBurger:
             and first_ingredient.get_price.call_count == 1
             and second_ingredient.get_price.call_count == 1
         )
-
 
     def test_get_receipt_formats_bun_ingredients_and_total_price():
         burger = Burger()
