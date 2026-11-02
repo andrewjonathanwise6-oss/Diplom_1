@@ -17,13 +17,13 @@ def ingredients():
 
 
 class TestBurger:
-    def test_new_burger_starts_without_bun_or_ingredients():
+    def test_new_burger_starts_without_bun_or_ingredients(self):
         burger = Burger()
 
         assert burger.bun is None
         assert burger.ingredients == []
 
-    def test_set_buns_assigns_bun():
+    def test_set_buns_assigns_bun(self):
         burger = Burger()
         bun = Bun("sesame", 100.0)
 
@@ -31,7 +31,7 @@ class TestBurger:
 
         assert burger.bun is bun
 
-    def test_add_ingredient_appends_ingredient(ingredients):
+    def test_add_ingredient_appends_ingredient(self, ingredients):
         burger = Burger()
 
         burger.add_ingredient(ingredients[0])
@@ -46,7 +46,7 @@ class TestBurger:
             (2, ["onion", "sauce"]),
         ],
     )
-    def test_remove_ingredient_removes_requested_item(ingredients, index, expected_names):
+    def test_remove_ingredient_removes_requested_item(self, ingredients, index, expected_names):
         burger = Burger()
         burger.ingredients = ingredients.copy()
 
@@ -62,7 +62,7 @@ class TestBurger:
             (1, 1, ["onion", "sauce", "tomato"]),
         ],
     )
-    def test_move_ingredient_reorders_items(ingredients, index, new_index, expected_names):
+    def test_move_ingredient_reorders_items(self, ingredients, index, new_index, expected_names):
         burger = Burger()
         burger.ingredients = ingredients.copy()
 
@@ -70,7 +70,7 @@ class TestBurger:
 
         assert [ingredient.get_name() for ingredient in burger.ingredients] == expected_names
 
-    def test_get_price_doubles_bun_price_and_adds_ingredient_prices():
+    def test_get_price_doubles_bun_price_and_adds_ingredient_prices(self):
         bun = Mock(spec=Bun)
         bun.get_price.return_value = 120.0
         first_ingredient = Mock(spec=Ingredient)
@@ -91,7 +91,7 @@ class TestBurger:
             and second_ingredient.get_price.call_count == 1
         )
 
-    def test_get_receipt_formats_bun_ingredients_and_total_price():
+    def test_get_receipt_formats_bun_ingredients_and_total_price(self):
         burger = Burger()
         burger.set_buns(Bun("Sesame", 120.0))
         burger.add_ingredient(Ingredient("SAUCE", "Mustard", 25.0))
